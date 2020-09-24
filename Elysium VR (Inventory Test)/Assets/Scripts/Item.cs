@@ -43,6 +43,7 @@ public class Item : MonoBehaviour
         //кэширование данных
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         rg = GetComponent<Rigidbody>();
+        rg.mass = itemData.ItemWeight;// задаём массу в соответствии с конфигурацией предмета
         selectionRenderer = GetComponent<Renderer>();
         defaultMaterial = selectionRenderer.material;
         defaultData = GameObject.FindGameObjectWithTag("DefaultData").GetComponent<DefaultData>();
@@ -234,4 +235,5 @@ public class Item : MonoBehaviour
             transform.localRotation = Quaternion.Lerp(transform.localRotation, itemData.RotationOnBackpack, 5f * Time.deltaTime);
         }
     }
+
 }
