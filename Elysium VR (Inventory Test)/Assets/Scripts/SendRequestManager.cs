@@ -29,8 +29,6 @@ public class SendRequestManager : MonoBehaviour
 
         yield return request.SendWebRequest();
 
-        Debug.Log(Identificator);
-        Debug.Log(EventName);
         Debug.Log(request.downloadHandler.text);
 
 

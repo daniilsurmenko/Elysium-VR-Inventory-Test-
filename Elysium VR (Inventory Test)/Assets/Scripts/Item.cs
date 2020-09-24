@@ -95,7 +95,7 @@ public class Item : MonoBehaviour
     {
         if (!itemData.InInventory)//изменение позиции предмета в соответствии с мировыми координатами мыши
         {
-            transform.position = new Vector3(GetMouseWorldPosition().x + mouseOffSet.x, transform.position.y, GetMouseWorldPosition().z + mouseOffSet.z);//здесь игнорируется ось Y
+            transform.position = Vector3.Lerp(transform.position, new Vector3(GetMouseWorldPosition().x + mouseOffSet.x, transform.position.y, GetMouseWorldPosition().z + mouseOffSet.z), 5 * Time.deltaTime);//здесь игнорируется ось Y
         }
     }
     private void OnMouseUp()
@@ -224,7 +224,7 @@ public class Item : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetMouseButtonUp(0) && isOverItem)// извлекаем предмет, если мышь была на предметов в момент отжатия ЛКМ
+        if (Input.GetMouseButtonUp(0) && isOverItem)// извлекаем предмет, если мышь была над предметом в момент отжатия ЛКМ
         {
             RemoveItemFromInventory();
         }
